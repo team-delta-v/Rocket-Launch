@@ -1,0 +1,28 @@
+{
+  "name": "space-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "moment": "^2.22.2",
+    "next": "^7.0.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-motion": "^0.5.2",
+    "react-simple-maps": "~0.12.0",
+    "reactstrap": "^6.4.0",
+    "superagent": "^4.0.0-beta.5",
+    "tingle.js": "^0.13.2",
+    "vex-js": "^4.1.0"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "eslint-config-lemon": "0.1.8"
+  }
+}
