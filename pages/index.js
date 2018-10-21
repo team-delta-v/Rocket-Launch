@@ -32,7 +32,7 @@ export default class extends React.Component {
 
   static async getInitialProps() {
     const res = await request.get(
-      `https://launchlibrary.net/1.3/launch/next/20`,
+      `https://launchlibrary.net/1.3/launch/next/80`,
     )
     shitLog(res.body)
     return { data: res.body }
@@ -76,6 +76,7 @@ export default class extends React.Component {
             </p>
           </Jumbotron>
 
+          <h4>Looking to see a launch?</h4>
           <RecommendedLaunch
             position={this.state.position}
             launches={this.props.data}
@@ -97,7 +98,8 @@ export default class extends React.Component {
               ),
             )}
                   /> */}
-          <h3>Upcoming launches</h3>
+          <br />
+          <h4>All upcoming launches</h4>
           <br />
           <Table bordered>
             <tbody>
