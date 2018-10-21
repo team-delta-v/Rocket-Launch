@@ -31,13 +31,5 @@ export default class extends React.Component {
   }
 
   render() {
-    return (
-      <Layout>
-        <script
-          type="text/javascript"
-          src="https://darksky.net/widget/default/42.360082,-71.05888/us12/en.js?height=500&title=Full Forecast&textColor=333333&bgColor=FFFFFF&skyColor=333&fontFamily=Default&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes"
-        />
-      </Layout>
-    )
-  }
-}
+    return 
+    <script src='https://darksky.net/map-embed/@wind_speed,39.000,-95.000,4.js?embed=true&timeControl=false&fieldControl=false&defaultField=wind_speed&defaultUnits=_mph'></script>
