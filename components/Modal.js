@@ -30,13 +30,15 @@ export default class MoreInfo extends React.Component {
             <div>
               <a
                 href={
+                  this.props.data.location.pads[0] &&
                   this.props.data.location.pads[0].agencies
                     ? this.props.data.location.pads[0].agencies[0].wikiURL
                     : ''
                 }
               >
                 <h2>
-                  {this.props.data.location.pads[0].agencies
+                  {this.props.data.location.pads[0] &&
+                  this.props.data.location.pads[0].agencies
                     ? this.props.data.location.pads[0].agencies[0].name
                     : 'Unknown agency'}
                 </h2>
@@ -75,10 +77,7 @@ export default class MoreInfo extends React.Component {
                   'www.youtube.com/embed/',
                 )}
                 title="space video 20"
-                style={{
-                  height: '400px',
-                  width: '100%',
-                }}
+                style={{ height: '400px', width: '100%' }}
                 frameBorder="0"
               />
             </p>

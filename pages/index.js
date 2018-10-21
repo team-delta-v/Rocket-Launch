@@ -8,11 +8,11 @@ import {
   Table,
 } from 'reactstrap'
 import request from 'superagent'
-
 import moment from 'moment'
+import bluebird from 'bluebird'
+
 import Layout from '../components/Layout'
 import MoreInfo from '../components/Modal'
-
 import Map from '../components/AnimatedMap'
 
 function shitLog(x) {
@@ -21,24 +21,28 @@ function shitLog(x) {
 }
 
 export default class extends React.Component {
-  state = {
-    address: '',
-  }
-
   static async getInitialProps() {
     const res = await request.get(
       `https://launchlibrary.net/1.3/launch/next/20`,
     )
+    shitLog(res.body)
     return { data: res.body }
+    // Bluebird.map(body.launches, async x => {
+    //   const res2 = await request
+    //     .get('https://nominatim.openstreetmap.org/reverse')
+    //     .query({
+    //       format: 'json',
+    //       lat: '10',
+    //       lon: '10',
+    //       zoom: '18',
+    //       addressdetails: '1',
+    //     })
+    //   shitLog(res2)
+    // })
+    // return { data: res.body }
   }
 
-  getAddress = (lat, lon) => {
-    const res = request.get(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${10}&lon=${10}&zoom=18&addressdetails=1`,
-    )
-    this.setState({ address: res.body.address.country })
-    return this.state.address
-  }
+  getAddress = x => {}
 
   render() {
     return (
@@ -67,14 +71,18 @@ export default class extends React.Component {
           </Jumbotron>
           <Map
             cities={this.props.data.launches.map(x =>
-              shitLog({
-                name: x.location.pads[0].name,
-                coordinates: [
-                  x.location.pads[0].longitude,
-                  x.location.pads[0].latitude,
-                ],
-                eyedee: x.id,
-              }),
+              shitLog(
+                x.launches
+                  ? {
+                      name: x.location.pads[0].name,
+                      coordinates: [
+                        x.location.pads[0].longitude,
+                        x.location.pads[0].latitude,
+                      ],
+                      eyedee: x.id,
+                    }
+                  : undefined,
+              ),
             )}
           />
           <h3>Upcoming launches</h3>
@@ -86,12 +94,12 @@ export default class extends React.Component {
                   <td>{x.name}</td>
                   <td>{moment(x.isostart).calendar()}</td>
                   <td>
-                    <Button color="primary" href={x.location.pads[0].mapURL}>
+                    <Button
+                      color="primary"
+                      href={x.location.pads[0] ? x.location.pads[0].mapURL : ''}
+                    >
                       Open Map
                     </Button>
-                  </td>
-                  <td>
-                    {this.getAddress()} {this.state.address}
                   </td>
                   <td>
                     <MoreInfo data={x} />
