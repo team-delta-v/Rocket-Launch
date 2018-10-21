@@ -77,7 +77,10 @@ export default class MoreInfo extends React.Component {
                   'www.youtube.com/embed/',
                 )}
                 title="space video 20"
-                style={{ height: '400px', width: '100%' }}
+                style={{
+                  height: this.props.data.vidURLs[0] ? '400px' : '0',
+                  width: '100%',
+                }}
                 frameBorder="0"
               />
             </p>

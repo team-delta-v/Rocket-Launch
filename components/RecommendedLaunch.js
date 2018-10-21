@@ -48,7 +48,7 @@ export default ({ position, launches }) => {
           <Col xs="6">
             <Card style={{ width: '400px' }}>
               <CardBody>
-                <CardTitle>Recommended Launch</CardTitle>
+                <CardTitle>Closest Launch</CardTitle>
                 <CardSubtitle>{x.name}</CardSubtitle>
                 <CardText>{x.location.pads[0].agencies[0].name}</CardText>
                 <img
@@ -94,7 +94,7 @@ export default ({ position, launches }) => {
                         x.location.pads[0].latitude
                       },${x.location.pads[0].longitude},12.75z`}
                     >
-                      Find nearby attractions
+                      &nbsp Find nearby attractions
                     </Button>
                   </ButtonGroup>
                   <CardText>
@@ -107,6 +107,7 @@ export default ({ position, launches }) => {
           <Col>
             <Card>
               <iframe
+                title="weather"
                 id="map-embed-iframe"
                 frameBorder="0"
                 height="500px"
@@ -124,7 +125,13 @@ export default ({ position, launches }) => {
     ))
   ) : (
     <>
-      <MDSpinner /> <b>Loading</b>
+      {position === false ? (
+        'Error: Location Access Denied'
+      ) : (
+        <>
+          <MDSpinner /> <b>Loading</b>
+        </>
+      )}
     </>
   )
 }

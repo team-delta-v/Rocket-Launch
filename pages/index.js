@@ -52,12 +52,14 @@ export default class extends React.Component {
   }
 
   async componentWillMount() {
-    const position = await getPosition()
-    shitLog(position)
-    this.setState({ position })
+    try {
+      const position = await getPosition()
+      shitLog(position)
+      this.setState({ position })
+    } catch (e) {
+      this.setState({ position: false })
+    }
   }
-
-  getAddress = x => {}
 
   render() {
     return (
@@ -70,12 +72,11 @@ export default class extends React.Component {
               Challenge at Baltimore, MD.
             </h5>
             <p>
-              Enter your address and the app will geocode into latitude and
-              longitude. Then, we track the recent flight and launch times and
-              locations, as well as the orbiting path of objects in space.
+              Do you know when the next rocket launch is? What factors go into a
+              decision to launch?
             </p>
           </Jumbotron>
-
+          <img src="./static/planet.PNG" />
           <h4>Looking to see a launch?</h4>
           <RecommendedLaunch
             position={this.state.position}
