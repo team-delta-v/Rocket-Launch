@@ -21,12 +21,23 @@ function shitLog(x) {
 }
 
 export default class extends React.Component {
+  state = {
+    address: '',
+  }
+
   static async getInitialProps() {
     const res = await request.get(
       `https://launchlibrary.net/1.3/launch/next/20`,
     )
-    console.log(res)
     return { data: res.body }
+  }
+
+  getAddress = (lat, lon) => {
+    const res = request.get(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${10}&lon=${10}&zoom=18&addressdetails=1`,
+    )
+    this.setState({ address: res.body.address.country })
+    return this.state.address
   }
 
   render() {
@@ -78,6 +89,9 @@ export default class extends React.Component {
                     <Button color="primary" href={x.location.pads[0].mapURL}>
                       Open Map
                     </Button>
+                  </td>
+                  <td>
+                    {this.getAddress()} {this.state.address}
                   </td>
                   <td>
                     <MoreInfo data={x} />

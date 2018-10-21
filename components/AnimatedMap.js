@@ -78,7 +78,7 @@ class AnimatedMap extends Component {
       // Here goes some logic
       modal.close()
 
-      const elem = document.getElementById(shitLog(`number-${city.eyedee}`))
+      const elem = document.getElementById(`number-${city.eyedee}`)
 
       elem.scrollIntoView()
 

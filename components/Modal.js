@@ -43,9 +43,7 @@ export default class MoreInfo extends React.Component {
               </a>
             </div>
             <p>
-              {shitLog(this.props.missions)
-                ? this.props.missions[0].description
-                : ''}
+              {this.props.missions ? this.props.missions[0].description : ''}
             </p>
 
             <h3>Rocket Information:</h3>
