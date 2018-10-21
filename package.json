@@ -4,19 +4,25 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@abcnews/react-globe": "^1.0.6",
     "bluebird": "^3.5.2",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
+    "mobx": "^5.5.1",
+    "mobx-react": "^5.2.3",
     "moment": "^2.22.2",
     "next": "^7.0.2",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-md-spinner": "^0.3.0",
     "react-motion": "^0.5.2",
     "react-simple-maps": "~0.12.0",
     "reactstrap": "^6.4.0",
     "superagent": "^4.0.0-beta.5",
     "tingle.js": "^0.13.2",
-    "vex-js": "^4.1.0"
+    "vex-js": "^4.1.0",
+    "worldwind-react-globe": "^1.1.0"
   },
   "scripts": {
     "dev": "next",

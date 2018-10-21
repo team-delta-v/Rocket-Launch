@@ -1,3 +1,15 @@
+try {
+  global.shitLog = x => {
+    console.log(x)
+    return x
+  }
+} catch (e) {
+  window.shitLog = x => {
+    console.log(x)
+    return x
+  }
+}
+
 const Layout = ({ children }) => (
   <div>
     <head>

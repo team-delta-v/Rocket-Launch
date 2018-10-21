@@ -14,13 +14,22 @@ import bluebird from 'bluebird'
 import Layout from '../components/Layout'
 import MoreInfo from '../components/Modal'
 import Map from '../components/AnimatedMap'
+import RecommendedLaunch from '../components/RecommendedLaunch'
 
 function shitLog(x) {
   console.log(x)
   return x
 }
 
+function getPosition(options) {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options)
+  })
+}
+
 export default class extends React.Component {
+  state = {}
+
   static async getInitialProps() {
     const res = await request.get(
       `https://launchlibrary.net/1.3/launch/next/20`,
@@ -42,6 +51,12 @@ export default class extends React.Component {
     // return { data: res.body }
   }
 
+  async componentWillMount() {
+    const position = await getPosition()
+    shitLog(position)
+    this.setState({ position })
+  }
+
   getAddress = x => {}
 
   render() {
@@ -51,25 +66,21 @@ export default class extends React.Component {
           <Jumbotron>
             <h1 className="display-1">Launch Data</h1>
             <h5>
-              Havish Netla, Jeffrey Yang, Daniel Huang for the 2018 Space Apps
-              Challenge at JHU
+              Daniel Huang, Havish Netla, Jeffrey Yang for the 2018 Space Apps Challenge at JHU
             </h5>
             <p>
               Enter your address and the app will geocode into latitude and
               longitude. Then, we track the recent flight and launch times and
               locations, as well as the orbiting path of objects in space.
             </p>
-            <FormGroup>
-              <Label for="location">Location</Label>
-              <Input
-                type="text"
-                name="location"
-                id="location"
-                placeholder="Baltimore, MD"
-              />
-            </FormGroup>
           </Jumbotron>
-          <Map
+
+          <RecommendedLaunch
+            position={this.state.position}
+            launches={this.props.data}
+          />
+
+          {/* <Map
             cities={this.props.data.launches.map(x =>
               shitLog(
                 x.launches
@@ -84,7 +95,7 @@ export default class extends React.Component {
                   : undefined,
               ),
             )}
-          />
+                  /> */}
           <h3>Upcoming launches</h3>
           <br />
           <Table bordered>
