@@ -11,11 +11,6 @@ import { Button, ButtonGroup } from 'reactstrap'
 import { Motion, spring } from 'react-motion'
 import * as jq from 'jquery'
 
-function shitLog(x) {
-  console.log(x)
-  return x
-}
-
 const wrapperStyles = {
   width: '100%',
   maxWidth: 980,

@@ -16,11 +16,6 @@ import MoreInfo from '../components/Modal'
 import Map from '../components/AnimatedMap'
 import RecommendedLaunch from '../components/RecommendedLaunch'
 
-function shitLog(x) {
-  console.log(x)
-  return x
-}
-
 function getPosition(options) {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options)
@@ -66,17 +61,30 @@ export default class extends React.Component {
       <Layout>
         <Container style={{ marginTop: '3em' }}>
           <Jumbotron>
-            <h1 className="display-1">Launch Data</h1>
+            <h1 className="display-1">Rocket Launch App</h1>
             <h5>
               Daniel Huang, Havish Netla, Jeffrey Yang for the 2018 Space Apps
               Challenge at Baltimore, MD.
             </h5>
             <p>
-              Do you know when the next rocket launch is? What factors go into a
-              decision to launch?
+              Future rocket launch data (location, time, agency, etc.),
+              international launch sites locations, and real time atmospheric
+              conditions.
             </p>
           </Jumbotron>
-          <img src="./static/planet.PNG" />
+          <h3 style={{ textAlign: 'center' }}>
+            Major international rocket launch sites worldwide
+          </h3>
+          <img
+            src="./static/planet.PNG"
+            style={{
+              height: '355px',
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              width: '62%',
+            }}
+          />
           <h4>Looking to see a launch?</h4>
           <RecommendedLaunch
             position={this.state.position}
@@ -100,7 +108,7 @@ export default class extends React.Component {
             )}
                   /> */}
           <br />
-          <h4>All upcoming launches</h4>
+          <h4>Next 80 Launches:</h4>
           <br />
           <Table bordered>
             <tbody>

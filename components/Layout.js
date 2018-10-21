@@ -1,23 +1,18 @@
+const shitlogEnabled = false
+
 try {
-  global.shitLog = x => {
-    console.log(x)
-    return x
-  }
+  global.shitLog = x =>
+    // If (shitlogEnabled) console.log(x)
+    x
 } catch (e) {
-  window.shitLog = x => {
-    console.log(x)
-    return x
-  }
+  window.shitLog = x =>
+    // If (shitlogEnabled) console.log(x)
+    x
 }
 
 const Layout = ({ children }) => (
   <div>
     <head>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
-      />
-
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

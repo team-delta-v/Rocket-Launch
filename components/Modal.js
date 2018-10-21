@@ -1,10 +1,5 @@
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
-function shitLog(x) {
-  console.log(x)
-  return x
-}
-
 export default class MoreInfo extends React.Component {
   state = {}
 

@@ -94,7 +94,7 @@ export default ({ position, launches }) => {
                         x.location.pads[0].latitude
                       },${x.location.pads[0].longitude},12.75z`}
                     >
-                      &nbsp Find nearby attractions
+                      Find nearby attractions
                     </Button>
                   </ButtonGroup>
                   <CardText>
@@ -106,18 +106,25 @@ export default ({ position, launches }) => {
           </Col>
           <Col>
             <Card>
-              <iframe
-                title="weather"
-                id="map-embed-iframe"
-                frameBorder="0"
-                height="500px"
-                width="100%"
-                src={`https://maps.darksky.net/@wind_speed,${
-                  x.location.pads[0].latitude
-                },${
-                  x.location.pads[0].longitude
-                },5?domain=&quot;+encodeURIComponent(window.location.href)+&quot;&auth=1540140785_b7ab7cf7f90f02bd0fe0259f7a4f027d&embed=true&amp;timeControl=false&amp;fieldControl=false&amp;defaultField=wind_speed&amp;defaultUnits=_mph`}
-              />
+              <CardBody>
+                <CardTitle>
+                  Interactive world map that displays different atmospheric
+                  conditions including wind speed and precipitation. The time
+                  can also be changed to account for the future.
+                </CardTitle>
+                <iframe
+                    title="weather"
+                    id="map-embed-iframe"
+                    frameBorder="0"
+                    height="500px"
+                    width="100%"
+                    src={`https://maps.darksky.net/@wind_speed,${
+                    x.location.pads[0].latitude
+                  },${
+                    x.location.pads[0].longitude
+                  },5?domain=&quot;+encodeURIComponent(window.location.href)+&quot;&auth=1540140785_b7ab7cf7f90f02bd0fe0259f7a4f027d&embed=true&amp;timeControl=false&amp;fieldControl=false&amp;defaultField=wind_speed&amp;defaultUnits=_mph`}
+                  />
+              </CardBody>
             </Card>
           </Col>
         </Row>
